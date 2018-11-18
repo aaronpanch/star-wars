@@ -3,7 +3,8 @@
   :url "https://github.com/aaronpanch/star-wars"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
-  :dependencies [[org.clojure/clojure "1.8.0"]]
+  :dependencies [[org.clojure/clojure "1.8.0"]
+                 [com.walmartlabs/lacinia "0.31.0-SNAPSHOT-1"]]
   :main ^:skip-aot star-wars.core
   :target-path "target/%s"
   :profiles {:uberjar {:aot :all}})
