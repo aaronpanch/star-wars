@@ -1,4 +1,5 @@
 (ns star-wars.core
+  (:require [star-wars.query :as query :refer [q]])
   (:gen-class))
 
 (defn -main

@@ -6,7 +6,7 @@
  :objects
  {:droid
   {:fields {:primary_functions {:type (list String)}
-            :id {:type Int}
+            :id {:type ID}
             :name {:type String}
             :appears_in {:type (list :episode)}}}
 
@@ -22,6 +22,15 @@
     :description "Look for a hero!"
     :args {:episode {:type :episode}}
     :resolve :get-hero}
-  :droid {:type (list Int)
-          :args {:id {:type String :default-value "2001"}}
-          :resolve :get-droid}}}
+  :droid
+    {:type :droid
+     :description "Lookup a droid"
+     :args {:id {:type (non-null ID)}}
+     :resolve :get-droid}}
+
+ :mutations
+ {:create_droid
+   {:type (non-null ID)
+    :description "Get your own droid"
+    :args {:name {:type String}}
+    :resolve :create-droid}}}

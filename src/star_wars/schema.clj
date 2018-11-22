@@ -3,7 +3,8 @@
     [clojure.java.io :as io]
     [com.walmartlabs.lacinia.util :as util]
     [com.walmartlabs.lacinia.schema :as schema]
-    [clojure.edn :as edn]))
+    [clojure.edn :as edn]
+    [star-wars.droids]))
 
 (defn get-hero [context arguments value]
   (let [{:keys [episode]} arguments]
@@ -23,5 +24,6 @@
       slurp
       edn/read-string
       (util/attach-resolvers {:get-hero get-hero
-                              :get-droid (constantly '(1 2 3))})
+                              :get-droid star-wars.droids/get-droid
+                              :create-droid star-wars.droids/create-droid})
       schema/compile))
