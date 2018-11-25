@@ -1,10 +1,11 @@
 (ns star-wars.db
   (:require
-    [taoensso.faraday :as ddb]))
+    [environ.core :refer [env]]))
 
 (def config
-  { :access-key "bogus"
-    :secret-key "secret"
-    :endpoint "http://localhost:8000" })
+  (if (env :development)
+    {:access-key "access"
+     :secret-key "secret"
 
-(ddb/ensure-table config :droids [:id :s] {:throughput {:read 1 :write 1} :block? true })
+     :endpoint "http://localhost:8000"}
+    {:endpoint "http://dynamodb.us-east-1.amazonaws.com"}))
